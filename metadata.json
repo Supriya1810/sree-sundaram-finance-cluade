@@ -1,0 +1,6 @@
+{
+  "name": "Sree Sundaram Finance Private Limited",
+  "description": "A premium and highly secure digital gold loan platform providing instant credit against gold ornaments with transparent valuation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
