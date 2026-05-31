@@ -15,7 +15,7 @@ export default function ParallaxCard({
   id, 
   className = '', 
   onClick, 
-  glowColor = '#F39200' 
+  glowColor = '#D4A017' 
 }: ParallaxCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
@@ -51,20 +51,13 @@ export default function ParallaxCard({
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       animate={{
-        rotateX: isHovered ? tilt.x : 0,
-        rotateY: isHovered ? tilt.y : 0,
-        scale: isHovered ? 1.01 : 1,
-        y: isHovered ? -4 : 0,
+        scale: isHovered ? 1.02 : 1,
+        y: isHovered ? -6 : 0,
       }}
-      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-      style={{ 
-        transformStyle: 'preserve-3d',
-        perspective: 1000,
-        backfaceVisibility: 'hidden',
-        WebkitBackfaceVisibility: 'hidden',
-        willChange: 'transform',
-      }}
-      className={`relative overflow-hidden cursor-pointer rounded-2xl bg-[#0b0c10]/95 border border-white/[0.04] transition-colors duration-300 ${className}`}
+      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+      className={`relative overflow-hidden cursor-pointer rounded-2xl bg-lux-bg-secondary/70 backdrop-blur-md border transition-all duration-300 ${
+        isHovered ? 'border-lux-gold-primary/70 shadow-xl shadow-lux-gold-primary/10' : 'border-lux-border'
+      } ${className}`}
     >
       {/* Dynamic glow tracking the cursor */}
       {isHovered && (
@@ -73,20 +66,13 @@ export default function ParallaxCard({
           style={{
             width: '260px',
             height: '260px',
-            background: `radial-gradient(circle, ${glowColor}25 0%, rgba(243,146,0,0) 70%)`,
+            background: `radial-gradient(circle, ${glowColor}25 0%, ${glowColor}00 70%)`,
             left: `${coords.x - 130}px`,
             top: `${coords.y - 130}px`,
           }}
         />
       )}
-      <div 
-        className="relative z-10 w-full h-full" 
-        style={{ 
-          transform: 'translate3d(0, 0, 1px)',
-          backfaceVisibility: 'hidden',
-          WebkitBackfaceVisibility: 'hidden'
-        }}
-      >
+      <div className="relative z-10 w-full h-full">
         {children}
       </div>
     </motion.div>

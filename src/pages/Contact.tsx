@@ -3,15 +3,14 @@ import { motion } from 'motion/react';
 import ParallaxCard from '../components/ParallaxCard';
 import { 
   Sparkles, Phone, Mail, Clock, MapPin, Send, HelpCircle, 
-  HelpCircle as SupportIcon, ShieldCheck, CheckCircle2, MessageSquareIcon, ArrowRight, ExternalLink 
+  ShieldCheck, CheckCircle2, MessageSquareIcon, ArrowRight, ExternalLink 
 } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    weight: '',
-    location: '',
+    email: '',
     message: ''
   });
   
@@ -33,8 +32,7 @@ export default function Contact() {
     setFormData({
       name: '',
       phone: '',
-      weight: '',
-      location: '',
+      email: '',
       message: ''
     });
     setSubmitted(false);
@@ -74,24 +72,24 @@ export default function Contact() {
   ];
 
   return (
-    <div id="contact-page-root" className="bg-[#050507] text-[#eff0f5] min-h-screen relative overflow-hidden pt-28">
+    <div id="contact-page-root" className="bg-transparent text-lux-text-main min-h-screen relative overflow-hidden pt-28">
       
       {/* Background ambient radial gradients only */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-lux-gold-primary/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-lux-border/5 rounded-full blur-[140px] pointer-events-none" />
 
       {/* HERO SECTION */}
-      <section id="contact-hero" className="relative py-16 px-6 sm:px-8 max-w-7xl mx-auto z-10 text-center space-y-6">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4AF37]/5 border border-[#D4AF37]/25 text-xs text-[#D4AF37] tracking-widest uppercase font-mono">
-          <MessageSquareIcon className="w-3.5 h-3.5" />
+      <section id="contact-hero" className="relative py-12 md:py-16 lg:py-20 px-6 sm:px-8 max-w-7xl mx-auto z-10 text-center space-y-6 animate-none">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-lux-gold-primary/5 border border-lux-border text-xs text-lux-gold-primary tracking-widest uppercase font-mono">
+          <MessageSquareIcon className="w-3.5 h-3.5 text-lux-gold-primary" />
           <span>Connect with Us</span>
         </div>
 
         <h1 className="font-serif text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
-          Establish Contact with <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#D4AF37] to-yellow-500">Sree Sundaram Finance</span>
+          Establish Contact with <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-lux-gold-primary to-lux-gold-primary">Sree Sundaram Finance</span>
         </h1>
 
-        <p className="text-neutral-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lux-text-sec text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           Need quick credit guidance, interest quote evaluations, or custom loan tenures? Reach out immediately. Our secure support desk responds within minutes.
         </p>
 
@@ -99,7 +97,7 @@ export default function Contact() {
           {['Quick Response', 'Secure Handling', 'Clear Guidance'].map((tag) => (
             <span 
               key={tag} 
-              className="px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono tracking-wider font-semibold text-neutral-300"
+              className="px-4 py-1.5 rounded-full bg-lux-bg-secondary/90 border border-lux-border text-xs font-mono tracking-wider font-semibold text-white hover:border-lux-gold-primary/45 transition-all duration-300"
             >
               {tag}
             </span>
@@ -108,7 +106,7 @@ export default function Contact() {
       </section>
 
       {/* CORE CONTACT CARDS */}
-      <section id="contact-infos-grid" className="relative py-8 px-6 sm:px-8 max-w-7xl mx-auto z-10">
+      <section id="contact-infos-grid" className="relative py-6 px-6 sm:px-8 max-w-7xl mx-auto z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {contactInfos.map((card, idx) => {
             const Icon = card.icon;
@@ -121,26 +119,29 @@ export default function Contact() {
                 onClick={handleClick}
                 key={card.title}
                 glowColor="#D4AF37"
-                className={`p-5 bg-neutral-900/40 border border-white/[0.03] ${
+                className={`p-6 sm:p-7 md:p-8 bg-lux-bg-secondary/90 border border-lux-border hover:border-lux-gold-primary/40 ${
                   isClickable ? 'group cursor-pointer' : ''
-                } flex flex-col justify-between space-y-7`}
+                } flex flex-col justify-between space-y-8`}
               >
+                {/* Icon block with z-99 and margin constraints */}
                 <div className="flex items-center justify-between relative z-[99]">
-                  <div className="p-3 bg-[#D4AF37]/5 rounded-xl text-[#D4AF37] border border-[#D4AF37]/10">
-                    <Icon className="w-5 h-5 animate-pulse" />
+                  <div className="p-3 bg-lux-gold-primary/10 rounded-xl text-lux-gold-primary border border-lux-border">
+                    <Icon className="w-5 h-5" />
                   </div>
                   {isClickable && (
-                    <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-[#D4AF37] transition-colors" />
+                    <ExternalLink className="w-3.5 h-3.5 text-lux-text-muted group-hover:text-lux-gold-primary transition-colors" />
                   )}
                 </div>
 
-                <div className="space-y-1 pt-2 relative z-[99]">
-                  <h4 className="text-[10px] uppercase font-mono tracking-wider font-bold text-neutral-400">{card.title}</h4>
-                  <div className="text-base font-serif font-bold text-white tracking-wide">{card.value}</div>
-                  {card.sub && <div className="text-xs font-mono text-neutral-300">{card.sub}</div>}
+                {/* Explicitly padded distance/gap between the icon and the text block */}
+                <div className="space-y-2 pt-4 relative z-[99]">
+                  <h4 className="text-[10px] uppercase font-mono tracking-wider font-extrabold text-lux-text-muted">{card.title}</h4>
+                  <div className="text-lg font-serif font-bold text-white tracking-wide leading-snug">{card.value}</div>
+                  {card.sub && <div className="text-xs font-mono text-lux-gold-primary/90 font-medium">{card.sub}</div>}
                 </div>
 
-                <div className="pt-2 border-t border-white/[0.03] text-[10px] font-mono text-neutral-500 uppercase relative z-[99]">
+                {/* Footer notes under text with top divider line */}
+                <div className="pt-3 border-t border-lux-border text-[10px] font-mono text-lux-text-muted uppercase relative z-[99]">
                   {card.note}
                 </div>
               </ParallaxCard>
@@ -150,25 +151,97 @@ export default function Contact() {
       </section>
 
       {/* INQUIRY FORM & BRANCH LOCATOR */}
-      <section id="contact-form-locator" className="relative py-16 px-6 sm:px-8 max-w-7xl mx-auto z-10 border-t border-neutral-900/60">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+      <section id="contact-form-locator" className="relative py-12 md:py-16 lg:py-20 px-6 sm:px-8 max-w-7xl mx-auto z-10 border-t border-lux-border">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* Form Side */}
-          <div className="lg:col-span-7 bg-neutral-950/60 border border-white/[0.04] rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
+          {/* Left Side: Contact Information */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <span className="text-xs font-mono text-lux-gold-primary uppercase tracking-widest block font-bold">Lending & Advisory Desk</span>
+                <h3 className="font-serif text-3xl font-black text-white leading-tight">Get in Touch Directly</h3>
+                <p className="text-lux-text-sec text-xs leading-relaxed">
+                  Connect with our senior partners for custom loan consultations, instant evaluations, or general service questions.
+                </p>
+              </div>
 
-            {!submitted ? (
-              <form id="gold-inquiry-form" onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-mono block mb-1">Inquiry Desk</span>
-                  <h3 className="font-serif text-2xl font-bold text-white">Inquire Now for Gold Loan</h3>
-                  <p className="text-xs text-neutral-400 mt-1">Submit your details here. Our certified agents will respond to estimate your custom terms.</p>
+              <div className="space-y-4 pt-2">
+                {/* Phone item */}
+                <div className="p-4 rounded-2xl bg-lux-bg-secondary border border-lux-border/40 hover:border-lux-gold-primary/20 transition-all flex gap-4 items-start group cursor-pointer" onClick={() => window.location.href = 'tel:+918888759696'}>
+                  <div className="p-3 bg-lux-gold-primary/5 rounded-xl text-lux-gold-primary border border-lux-border/20 group-hover:scale-105 transition-all">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-mono text-[#8E9196] uppercase tracking-wider block">Senior Finance Advisor</span>
+                    <div className="text-base font-bold text-white group-hover:text-lux-gold-primary transition-colors">+91-8888759696</div>
+                    <div className="text-[10px] text-neutral-400 font-mono">Shailesh Thakur Desk</div>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Email item */}
+                <div className="p-4 rounded-2xl bg-lux-bg-secondary border border-lux-border/40 hover:border-lux-gold-primary/20 transition-all flex gap-4 items-start group cursor-pointer" onClick={() => window.location.href = 'mailto:info@sreesundaramfinance.com'}>
+                  <div className="p-3 bg-lux-gold-primary/5 rounded-xl text-lux-gold-primary border border-lux-border/20 group-hover:scale-105 transition-all">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-mono text-[#8E9196] uppercase tracking-wider block">Corporate Email Desk</span>
+                    <div className="text-xs sm:text-sm font-bold text-white group-hover:text-lux-gold-primary transition-colors">info@sreesundaramfinance.com</div>
+                    <div className="text-[10px] text-neutral-400 font-mono">Official Corporate Support</div>
+                  </div>
+                </div>
+
+                {/* Address item */}
+                <div className="p-4 rounded-2xl bg-lux-bg-secondary border border-lux-border/40 hover:border-lux-gold-primary/20 transition-all flex gap-4 items-start group">
+                  <div className="p-3 bg-lux-gold-primary/5 rounded-xl text-lux-gold-primary border border-lux-border/20">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-mono text-[#8E9196] uppercase tracking-wider block">Office Location</span>
+                    <div className="text-xs sm:text-sm font-bold text-white leading-relaxed">Near Bhosari English School, Bhaghat Wasti, Sr. No. 23, Bhosari, Pune – 411039.</div>
+                    <div className="text-[10px] text-neutral-400 font-mono mt-1">SREE SUNDARAM FINANCE PVT LTD</div>
+                  </div>
+                </div>
+
+                {/* Hours item */}
+                <div className="p-4 rounded-2xl bg-lux-bg-secondary border border-lux-border/40 hover:border-lux-gold-primary/20 transition-all flex gap-4 items-start group">
+                  <div className="p-3 bg-lux-gold-primary/5 rounded-xl text-lux-gold-primary border border-lux-border/20">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-mono text-[#8E9196] uppercase tracking-wider block">Business Hours</span>
+                    <div className="text-sm font-bold text-white">Monday – Saturday</div>
+                    <div className="text-xs text-lux-gold-primary font-mono mt-0.5">9:30 AM – 6:30 PM <span className="text-neutral-500">(Sunday Closed)</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Support Badge */}
+            <div className="p-4 rounded-2xl bg-[#D4AF37]/5 border border-lux-border flex gap-4">
+              <ShieldCheck className="w-6 h-6 text-lux-gold-primary shrink-0 animate-pulse" />
+              <div className="space-y-0.5">
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF37] font-bold">Secured Appraisals</h4>
+                <p className="text-[11px] text-lux-text-sec leading-normal">Our team maintains rigorous safety protocols and certified gold testing equipment for instant valuation accuracy.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Contact Form */}
+          <div className="lg:col-span-7 bg-lux-bg-secondary border border-lux-border rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between shadow-xl">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-lux-gold-primary/[0.04] rounded-full blur-3xl pointer-events-none" />
+
+            {!submitted ? (
+              <form id="gold-inquiry-form" onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                <div>
+                  <span className="text-[10px] uppercase tracking-widest text-lux-gold-primary font-mono block mb-1 font-bold">Inquiry Desk</span>
+                  <h3 className="font-serif text-2xl font-bold text-white">Send an Advisory Request</h3>
+                  <p className="text-xs text-lux-text-sec mt-1">Submit your details below. Sree Sundaram Private Limited advisors will respond with tailored estimations.</p>
+                </div>
+
+                <div className="space-y-4">
                   {/* Name Input */}
                   <div className="space-y-2">
-                    <label htmlFor="inquiry-form-name" className="text-[10px] uppercase tracking-wider font-mono text-neutral-300 block">Name of Customer *</label>
+                    <label htmlFor="inquiry-form-name" className="text-[10px] uppercase tracking-wider font-mono text-lux-text-sec block font-bold">Full Name *</label>
                     <input
                       id="inquiry-form-name"
                       type="text"
@@ -176,66 +249,53 @@ export default function Contact() {
                       placeholder="e.g., Rohan Shinde"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-neutral-900/85 border border-white/[0.06] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37] transition-colors"
+                      className="w-full bg-[#121418]/65 border border-lux-border rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-lux-gold-primary focus:ring-1 focus:ring-lux-gold-primary transition-all duration-300"
                     />
                   </div>
 
-                  {/* Phone Input */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Phone Input */}
+                    <div className="space-y-2">
+                      <label htmlFor="inquiry-form-phone" className="text-[10px] uppercase tracking-wider font-mono text-lux-text-sec block font-bold">Phone Number *</label>
+                      <input
+                        id="inquiry-form-phone"
+                        type="tel"
+                        required
+                        placeholder="e.g., +91 88887 59696"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full bg-[#121418]/65 border border-lux-border rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-lux-gold-primary focus:ring-1 focus:ring-lux-gold-primary transition-all duration-300"
+                      />
+                    </div>
+
+                    {/* Email Input */}
+                    <div className="space-y-2">
+                      <label htmlFor="inquiry-form-email" className="text-[10px] uppercase tracking-wider font-mono text-lux-text-sec block font-bold">Email Address *</label>
+                      <input
+                        id="inquiry-form-email"
+                        type="email"
+                        required
+                        placeholder="e.g., rohan.shinde@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-[#121418]/65 border border-lux-border rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-lux-gold-primary focus:ring-1 focus:ring-lux-gold-primary transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Message */}
                   <div className="space-y-2">
-                    <label htmlFor="inquiry-form-phone" className="text-[10px] uppercase tracking-wider font-mono text-neutral-300 block">Mobile Number *</label>
-                    <input
-                      id="inquiry-form-phone"
-                      type="tel"
+                    <label htmlFor="inquiry-form-message" className="text-[10px] uppercase tracking-wider font-mono text-lux-text-sec block font-bold">Message *</label>
+                    <textarea
+                      id="inquiry-form-message"
+                      rows={4}
                       required
-                      placeholder="e.g., +91 88887 59696"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-neutral-900/85 border border-white/[0.06] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37] transition-colors"
+                      placeholder="Describe your gold components, credit needs, or desired repayment schedules..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full bg-[#121418]/65 border border-lux-border rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-lux-gold-primary focus:ring-1 focus:ring-lux-gold-primary transition-all duration-300 resize-none h-24"
                     />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Gold Weight */}
-                  <div className="space-y-2">
-                    <label htmlFor="inquiry-form-weight" className="text-[10px] uppercase tracking-wider font-mono text-neutral-300 block">Gold Weight (estimated) *</label>
-                    <input
-                      id="inquiry-form-weight"
-                      type="text"
-                      required
-                      placeholder="e.g., 50g / Ornaments"
-                      value={formData.weight}
-                      onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
-                      className="w-full bg-neutral-900/85 border border-white/[0.06] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37] transition-colors"
-                    />
-                  </div>
-
-                  {/* City/Location */}
-                  <div className="space-y-2">
-                    <label htmlFor="inquiry-form-location" className="text-[10px] uppercase tracking-wider font-mono text-neutral-300 block">City / Branch *</label>
-                    <input
-                      id="inquiry-form-location"
-                      type="text"
-                      required
-                      placeholder="e.g., Bhosari, Pune"
-                      value={formData.location}
-                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className="w-full bg-neutral-900/85 border border-white/[0.06] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37] transition-colors"
-                    />
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div className="space-y-2">
-                  <label htmlFor="inquiry-form-message" className="text-[10px] uppercase tracking-wider font-mono text-neutral-300 block font-normal">Your Inquiry Message (Optional)</label>
-                  <textarea
-                    id="inquiry-form-message"
-                    rows={4}
-                    placeholder="Describe your gold components, urgent needs, or custom repayment preferences..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-neutral-900/85 border border-white/[0.06] rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
-                  />
                 </div>
 
                 {/* Submit button */}
@@ -243,9 +303,9 @@ export default function Contact() {
                   id="inquiry-submit-btn"
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-xl bg-[#D4AF37] hover:bg-[#ffe380] text-black font-semibold text-xs uppercase tracking-widest transition-all duration-300 shadow-md shadow-amber-500/10 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-4 rounded-xl bg-lux-gold-primary hover:bg-lux-gold-primary/90 text-black font-extrabold text-xs uppercase tracking-widest transition-all duration-300 shadow-md shadow-black/45 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
-                  {loading ? 'Transmitting Secret Credentials...' : 'Submit Inquiry'}
+                  {loading ? 'Transmitting Secret Credentials...' : 'Get In Touch'}
                   <Send className="w-3.5 h-3.5" />
                 </button>
               </form>
@@ -253,28 +313,28 @@ export default function Contact() {
               /* Verification/Status of complete submission */
               <div id="contact-submission-success-view" className="space-y-8 py-8 text-center flex flex-col justify-center items-center h-full max-w-md mx-auto">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/35 flex items-center justify-center text-emerald-400">
-                  <CheckCircle2 className="w-8 h-8" />
+                  <CheckCircle2 className="w-8 h-8 opacity-90 animate-bounce" />
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="font-serif text-2xl font-bold text-white">Inquiry Received Successfully</h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
-                    Thank you, <strong className="text-neutral-200">{formData.name}</strong>. Your collateral overview with estimated gold weight <strong className="text-neutral-200">{formData.weight}</strong> has been secure logged.
+                  <h3 className="font-serif text-2xl font-bold text-white">Request Received Successfully</h3>
+                  <p className="text-xs text-lux-text-sec leading-relaxed">
+                    Thank you, <strong className="text-lux-gold-primary">{formData.name}</strong>. Your message has been safely logged with our team.
                   </p>
-                  <p className="text-xs text-neutral-500">
-                    A certified appraiser from our <strong className="text-neutral-300">{formData.location}</strong> desk will call your number <strong className="text-neutral-300">{formData.phone}</strong> shortly.
+                  <p className="text-xs text-lux-text-muted">
+                    A certified adviser from our corporate Bhosari desk will call your number <strong className="text-white">{formData.phone}</strong> or email you at <strong className="text-white">{formData.email}</strong> shortly.
                   </p>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-orange-500/5 border border-amber-500/10 text-[11px] text-[#D4AF37] flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 shrink-0" />
-                  <span>ISO 9001:2015 Encrypted Storage Active</span>
+                <div className="p-3.5 rounded-xl bg-lux-gold-primary/10 border border-lux-border text-[11px] text-lux-gold-primary flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 shrink-0 text-lux-gold-primary" />
+                  <span className="font-bold">ISO 9001:2015 Encrypted Storage Active</span>
                 </div>
 
                 <button
                   id="inquiry-form-reset-btn"
                   onClick={handleReset}
-                  className="px-6 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] hover:border-[#D4AF37]/30 text-xs text-neutral-300 hover:text-white transition-all cursor-pointer"
+                  className="px-6 py-2.5 rounded-full bg-lux-bg-primary border border-lux-border hover:border-lux-gold-primary/40 text-xs text-lux-text-sec hover:text-white transition-all cursor-pointer"
                 >
                   Submit Alternative Request
                 </button>
@@ -283,42 +343,43 @@ export default function Contact() {
           </div>
 
           {/* Locator Side */}
-          <div className="lg:col-span-5 flex flex-col justify-between spacing-y-6 space-y-6">
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             
-            {/* Registered Branch Card with beautiful gold visual map representation */}
+            {/* Registered Branch Card with beautiful gold representation */}
             <ParallaxCard 
               id="registered-address-section" 
               glowColor="#D4AF37"
-              className="p-8 bg-neutral-950/60 border border-white/[0.04] space-y-6"
+              className="p-8 bg-lux-bg-secondary border border-lux-border space-y-6 flex flex-col h-full justify-between"
             >
-              
-              <div className="space-y-1">
-                <span className="text-xs font-mono text-[#D4AF37] uppercase tracking-widest block">Corporate Location</span>
-                <h3 className="font-serif text-2xl font-bold text-white">Branch Locator</h3>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-neutral-900/40 border border-white/[0.02] space-y-4">
-                <div className="flex gap-3 items-start">
-                  <MapPin className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
-                  <div className="space-y-2">
-                    <span className="text-xs font-mono text-neutral-400 block font-bold">Company Name: <span className="text-neutral-100 font-serif block mt-0.5">SREE SUNDARAM FINANCE PRIVATE LIMITED</span></span>
-                    <p className="text-xs text-neutral-300 leading-relaxed">
-                      Near Bhosari English School, Bhaghat Wasti, Sr. No. 23, Bhosari, Pune – 411039.
-                    </p>
-                    <div className="border-t border-white/[0.03] pt-2 space-y-1 text-[11px] font-mono text-neutral-400">
-                      <div>GSTIN: <span className="text-[#D4AF37] font-bold">27ABTCS3490FIZT</span></div>
-                      <div>Specialist In: <span className="text-[#D4AF37] font-bold">Finance Advisor & All Loans</span></div>
-                    </div>
-                  </div>
+              <div className="space-y-6">
+                <div className="space-y-1">
+                  <span className="text-xs font-mono text-lux-gold-primary uppercase tracking-widest block font-bold">Corporate Location</span>
+                  <h3 className="font-serif text-2xl font-bold text-white">Branch Locator</h3>
                 </div>
 
-                {/* Minimal vector mock visual of a secure corporate vault room center */}
-                <div className="h-28 rounded-xl bg-[#090a0c] border border-white/[0.03] flex items-center justify-center p-4 relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-radial-gradient from-amber-500/5 to-transparent pointer-events-none" />
-                  <div className="text-center space-y-1.5 z-10">
-                    <div className="text-[10px] font-mono tracking-widest text-[#D4AF37] uppercase">Advisor Profile: Active</div>
-                    <div className="text-xs text-white font-serif font-bold">Shailesh Thakur Desk</div>
-                    <div className="text-[9px] text-neutral-500 font-mono">Bhosari Hub // Pune, Maharashtra</div>
+                <div className="p-5 rounded-2xl bg-lux-bg-primary/40 border border-lux-border space-y-4">
+                  <div className="flex gap-3 items-start">
+                    <MapPin className="w-5 h-5 text-lux-gold-primary shrink-0 mt-0.5" />
+                    <div className="space-y-2">
+                      <span className="text-xs font-mono text-lux-text-sec block font-bold">Company Name: <span className="text-white font-serif block mt-0.5 font-black text-sm text-lux-gold-primary">SREE SUNDARAM FINANCE PRIVATE LIMITED</span></span>
+                      <p className="text-xs text-lux-text-sec leading-relaxed">
+                        Near Bhosari English School, Bhaghat Wasti, Sr. No. 23, Bhosari, Pune – 411039.
+                      </p>
+                      <div className="border-t border-lux-border pt-2 space-y-1 text-[11px] font-mono text-lux-text-muted">
+                        <div>GSTIN: <span className="text-lux-gold-primary font-extrabold">27ABTCS3490FIZT</span></div>
+                        <div>Specialist In: <span className="text-lux-gold-primary font-extrabold">Finance Advisor & All Loans</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Secure corporate vault room segment */}
+                  <div className="h-28 rounded-xl bg-black/45 border border-lux-border flex items-center justify-center p-4 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-radial-gradient from-lux-gold-primary/10 to-transparent pointer-events-none" />
+                    <div className="text-center space-y-1.5 z-10">
+                      <div className="text-[10px] font-mono tracking-widest text-lux-gold-primary uppercase font-bold">Advisor Profile: Active</div>
+                      <div className="text-xs text-white font-serif font-black">Shailesh Thakur Desk</div>
+                      <div className="text-[9px] text-lux-text-muted font-mono">Bhosari Hub // Pune, Maharashtra</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -329,7 +390,7 @@ export default function Contact() {
                 href="https://wa.me/918888759696"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-4 rounded-xl bg-neutral-900 hover:bg-[#07080a] hover:border-emerald-500/25 border border-white/[0.05] text-[#eff0f5] font-semibold text-xs tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer"
+                className="w-full py-4 rounded-xl bg-lux-bg-primary hover:bg-lux-bg-primary/50 hover:border-lux-gold-primary/44 border border-lux-border text-white font-extrabold text-xs tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-black/80"
               >
                 <span>Navigate via WhatsApp</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -337,11 +398,11 @@ export default function Contact() {
             </ParallaxCard>
 
             {/* Quick Support Badge */}
-            <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 flex gap-4">
-              <ShieldCheck className="w-6 h-6 text-[#D4AF37] shrink-0" />
+            <div className="p-4 rounded-2xl bg-lux-gold-primary/5 border border-lux-border flex gap-4">
+              <ShieldCheck className="w-6 h-6 text-lux-gold-primary shrink-0" />
               <div className="space-y-0.5">
-                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF37]">Secured Appraisals</h4>
-                <p className="text-[11px] text-neutral-400 leading-normal">Our team maintains rigorous burglary protocols and certified gold testing equipment for instant valuation accuracy.</p>
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-lux-gold-primary font-bold">Secured Appraisals</h4>
+                <p className="text-[11px] text-lux-text-sec leading-normal">Our team maintains rigorous burglary protocols and certified gold testing equipment for instant valuation accuracy.</p>
               </div>
             </div>
 
@@ -351,15 +412,15 @@ export default function Contact() {
       </section>
 
       {/* SUPPORT TIMELINE / WHAT HAPPENS NEXT */}
-      <section id="contact-next-steps" className="relative py-24 px-6 sm:px-8 border-t border-neutral-900 bg-neutral-950/20 z-10">
+      <section id="contact-next-steps" className="relative py-12 md:py-16 lg:py-20 px-6 sm:px-8 border-t border-lux-border bg-lux-bg-secondary/30 z-10">
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center space-y-4 max-w-2xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-mono block">Support Cycle</span>
+            <span className="text-xs uppercase tracking-widest text-lux-gold-primary font-mono block">Support Cycle</span>
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-white">
               What happens next?
             </h2>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-lux-text-sec">
               Clear, step-by-step guidance from day one — so you always feel confident about your financial gold loan journey.
             </p>
           </div>
@@ -370,17 +431,17 @@ export default function Contact() {
                 id={`support-step-card-${idx}`}
                 key={card.num}
                 glowColor="#D4AF37"
-                className="p-6 bg-[#090a0d] border border-white/[0.03] space-y-4"
+                className="p-6 space-y-4"
               >
-                <div className="flex items-center justify-between border-b border-white/[0.03] pb-3">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/5 border border-amber-500/10 text-[#D4AF37] flex items-center justify-center font-mono text-xs font-black">
+                <div className="flex items-center justify-between border-b border-lux-border pb-3">
+                  <div className="w-8 h-8 rounded-full bg-lux-gold-primary/10 border border-lux-border text-lux-gold-primary flex items-center justify-center font-mono text-xs font-black">
                     {card.num}
                   </div>
-                  <span className="text-[9px] font-mono text-neutral-600 uppercase">STAGE // 0{idx + 1}</span>
+                  <span className="text-[9px] font-mono text-neutral-500 uppercase">STAGE // 0{idx + 1}</span>
                 </div>
                 <div className="space-y-1">
                   <h4 className="font-serif text-sm font-semibold text-white tracking-wide">{card.title}</h4>
-                  <p className="text-xs text-neutral-400 leading-relaxed">{card.desc}</p>
+                  <p className="text-xs text-lux-text-sec leading-relaxed">{card.desc}</p>
                 </div>
               </ParallaxCard>
             ))}
