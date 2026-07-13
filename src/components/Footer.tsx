@@ -37,7 +37,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <img
                 src={SreeSundaramLogo}
                 alt="SreeSundaram Logo"
-                className="md:w-60 w-28"
+                className="md:w-56 w-28"
               />
             </div>
 

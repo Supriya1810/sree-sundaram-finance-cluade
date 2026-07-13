@@ -34,7 +34,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center justify-between px-6 py-2 rounded-full bg-lux-bg-secondary/92 border border-lux-border backdrop-blur-xl shadow-2xl relative shadow-black/45"
+          className="flex items-center justify-between px-6 py-3 rounded-full bg-lux-bg-secondary/92 border border-lux-border backdrop-blur-xl shadow-2xl relative shadow-black/45"
         >
           {/* Brand Logo with SreeSundaramLogo */}
           <button
@@ -46,7 +46,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             <img
               src={SreeSundaramLogo}
               alt="SreeSundaram Logo"
-              className="md:w-60 w-28"
+              className="md:w-56 w-28"
             />
           </button>
 
