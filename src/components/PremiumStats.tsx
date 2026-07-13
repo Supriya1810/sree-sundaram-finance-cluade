@@ -14,7 +14,7 @@ interface StatItem {
 
 const statsData: StatItem[] = [
   {
-    target: 10,
+    target: 5,
     prefix: "",
     suffix: "+",
     label: "Years Experience",
@@ -22,7 +22,7 @@ const statsData: StatItem[] = [
     icon: Award,
   },
   {
-    target: 5000,
+    target: 100,
     prefix: "",
     suffix: "+",
     label: "Happy Customers",
@@ -30,9 +30,9 @@ const statsData: StatItem[] = [
     icon: Users,
   },
   {
-    target: 100,
+    target: 50,
     prefix: "₹",
-    suffix: " Cr+",
+    suffix: " L+",
     label: "Financial Solutions Delivered",
     desc: "High-value secure capital cleared with absolute confidence and promptness.",
     icon: TrendingUp,

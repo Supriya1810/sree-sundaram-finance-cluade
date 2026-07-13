@@ -46,7 +46,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             <img
               src={SreeSundaramLogo}
               alt="SreeSundaram Logo"
-              className="w-10"
+              className="md:w-60 w-28"
             />
           </button>
 
